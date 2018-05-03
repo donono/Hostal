@@ -1,0 +1,1059 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORIA">
+          <Key>
+            <PropertyRef Name="ID_CATEGORIA" />
+          </Key>
+          <Property Name="ID_CATEGORIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_CLI" />
+          </Key>
+          <Property Name="ID_CLI" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="CONTRASENIA" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="NOMBRE_EMPRESA" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="CORREO" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="RUT" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="UBICACION" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="PERFIL_ID_PERFIL" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="COMEDOR">
+          <Key>
+            <PropertyRef Name="ID_SERVICIO" />
+          </Key>
+          <Property Name="ID_SERVICIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="D_RESERVA">
+          <Key>
+            <PropertyRef Name="ID_DETALLE" />
+          </Key>
+          <Property Name="ID_DETALLE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COD_CLI" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="HABITACION_ID_HABIT" Type="number" Precision="38" Scale="0" />
+          <Property Name="RESERVA_ID_RESERVA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DETALLE_O_COMPRA">
+          <Key>
+            <PropertyRef Name="ID_DETALLE" />
+          </Key>
+          <Property Name="ID_DETALLE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="O_COMPRA_ID_ORDEN" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODUCTO_ID_PRODUCTO" Type="number" Precision="38" Scale="0" />
+          <Property Name="CANTIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SUB_TOTAL" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="EMP_CLIENTE">
+          <Key>
+            <PropertyRef Name="COD_CLI" />
+          </Key>
+          <Property Name="COD_CLI" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUN" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="APELLIDO" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="CLIENTE_ID_CLI" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="EMP_HOSTAL">
+          <Key>
+            <PropertyRef Name="COD_EMP" />
+          </Key>
+          <Property Name="COD_EMP" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="CONTRASENIA" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="CORREO" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="RUN" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="PERFIL_ID_PERFIL" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EQUIPO">
+          <Key>
+            <PropertyRef Name="ID_EQUIPO" />
+          </Key>
+          <Property Name="ID_EQUIPO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TV" Type="char" MaxLength="1" />
+          <Property Name="BANIO" Type="char" MaxLength="1" />
+          <Property Name="CANT_CAMAS" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FACTURA">
+          <Key>
+            <PropertyRef Name="ID_FACTURA" />
+          </Key>
+          <Property Name="ID_FACTURA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_FACTURA" Type="date" Nullable="false" />
+          <Property Name="TOTAL_PAGAR" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RESERVA_ID_RESERVA" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="HABITACION">
+          <Key>
+            <PropertyRef Name="ID_HABIT" />
+          </Key>
+          <Property Name="ID_HABIT" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_HABIT" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="PRECIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="EQUIPO_ID_EQUIPO" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="MENU">
+          <Key>
+            <PropertyRef Name="ID_MENU" />
+          </Key>
+          <Property Name="ID_MENU" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="CONTENIDO" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="PRECIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMEDOR_ID_SERVICIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="O_COMPRA">
+          <Key>
+            <PropertyRef Name="ID_ORDEN" />
+          </Key>
+          <Property Name="ID_ORDEN" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_ORDEN" Type="date" Nullable="false" />
+          <Property Name="TOTAL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO_ORDEN" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="EMP_HOSTAL_COD_EMP" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="PERFIL">
+          <Key>
+            <PropertyRef Name="ID_PERFIL" />
+          </Key>
+          <Property Name="ID_PERFIL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIPO" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="FECHA_VENCIMIENTO" Type="date" Nullable="false" />
+          <Property Name="PROVEEDOR_ID_PROVEEDOR" Type="number" Precision="38" Scale="0" />
+          <Property Name="CANT_STOCK" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STOCK_CRITICO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CATEGORIA_ID_CATEGORIA" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="ID_PROVEEDOR" />
+          </Key>
+          <Property Name="ID_PROVEEDOR" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="CORREO" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="UBICACION" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RESERVA">
+          <Key>
+            <PropertyRef Name="ID_RESERVA" />
+          </Key>
+          <Property Name="ID_RESERVA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="date" Nullable="false" />
+          <Property Name="FECHA_ENTRADA" Type="date" Nullable="false" />
+          <Property Name="FECHA_SALIDA" Type="date" Nullable="false" />
+          <Property Name="CANT_DIAS" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CLI" Type="number" Precision="38" Scale="0" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="TOTAL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMEDOR_ID_SERVICIO" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <Association Name="CLIENTE_PERFIL_FK">
+          <End Role="PERFIL" Type="Self.PERFIL" Multiplicity="0..1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERFIL">
+              <PropertyRef Name="ID_PERFIL" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="PERFIL_ID_PERFIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="D_RESERVA_HABITACION_FK">
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="0..1" />
+          <End Role="D_RESERVA" Type="Self.D_RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HABITACION">
+              <PropertyRef Name="ID_HABIT" />
+            </Principal>
+            <Dependent Role="D_RESERVA">
+              <PropertyRef Name="HABITACION_ID_HABIT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="D_RESERVA_RESERVA_FK">
+          <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="1" />
+          <End Role="D_RESERVA" Type="Self.D_RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESERVA">
+              <PropertyRef Name="ID_RESERVA" />
+            </Principal>
+            <Dependent Role="D_RESERVA">
+              <PropertyRef Name="RESERVA_ID_RESERVA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLE_O_COMPRA_O_COMPRA_FK">
+          <End Role="O_COMPRA" Type="Self.O_COMPRA" Multiplicity="1" />
+          <End Role="DETALLE_O_COMPRA" Type="Self.DETALLE_O_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_COMPRA">
+              <PropertyRef Name="ID_ORDEN" />
+            </Principal>
+            <Dependent Role="DETALLE_O_COMPRA">
+              <PropertyRef Name="O_COMPRA_ID_ORDEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLE_O_COMPRA_PRODUCTO_FK">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
+          <End Role="DETALLE_O_COMPRA" Type="Self.DETALLE_O_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="DETALLE_O_COMPRA">
+              <PropertyRef Name="PRODUCTO_ID_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_CLIENTE_CLIENTE_FK">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+          <End Role="EMP_CLIENTE" Type="Self.EMP_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="ID_CLI" />
+            </Principal>
+            <Dependent Role="EMP_CLIENTE">
+              <PropertyRef Name="CLIENTE_ID_CLI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_HOSTAL_PERFIL_FK">
+          <End Role="PERFIL" Type="Self.PERFIL" Multiplicity="1" />
+          <End Role="EMP_HOSTAL" Type="Self.EMP_HOSTAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERFIL">
+              <PropertyRef Name="ID_PERFIL" />
+            </Principal>
+            <Dependent Role="EMP_HOSTAL">
+              <PropertyRef Name="PERFIL_ID_PERFIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FACTURA_RESERVA_FK">
+          <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="0..1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESERVA">
+              <PropertyRef Name="ID_RESERVA" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="RESERVA_ID_RESERVA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HABITACION_EQUIPO_FK">
+          <End Role="EQUIPO" Type="Self.EQUIPO" Multiplicity="0..1" />
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPO">
+              <PropertyRef Name="ID_EQUIPO" />
+            </Principal>
+            <Dependent Role="HABITACION">
+              <PropertyRef Name="EQUIPO_ID_EQUIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MENU_COMEDOR_FK">
+          <End Role="COMEDOR" Type="Self.COMEDOR" Multiplicity="1" />
+          <End Role="MENU" Type="Self.MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMEDOR">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Principal>
+            <Dependent Role="MENU">
+              <PropertyRef Name="COMEDOR_ID_SERVICIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="O_COMPRA_EMP_HOSTAL_FK">
+          <End Role="EMP_HOSTAL" Type="Self.EMP_HOSTAL" Multiplicity="0..1" />
+          <End Role="O_COMPRA" Type="Self.O_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMP_HOSTAL">
+              <PropertyRef Name="COD_EMP" />
+            </Principal>
+            <Dependent Role="O_COMPRA">
+              <PropertyRef Name="EMP_HOSTAL_COD_EMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_CATEGORIA_FK">
+          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA">
+              <PropertyRef Name="ID_CATEGORIA" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="CATEGORIA_ID_CATEGORIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_PROVEEDOR_FK">
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="0..1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="ID_PROVEEDOR" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="PROVEEDOR_ID_PROVEEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RESERVA_COMEDOR_FK">
+          <End Role="COMEDOR" Type="Self.COMEDOR" Multiplicity="0..1" />
+          <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMEDOR">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Principal>
+            <Dependent Role="RESERVA">
+              <PropertyRef Name="COMEDOR_ID_SERVICIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="COMEDOR" EntityType="Self.COMEDOR" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="D_RESERVA" EntityType="Self.D_RESERVA" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="DETALLE_O_COMPRA" EntityType="Self.DETALLE_O_COMPRA" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="EMP_CLIENTE" EntityType="Self.EMP_CLIENTE" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="EMP_HOSTAL" EntityType="Self.EMP_HOSTAL" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="EQUIPO" EntityType="Self.EQUIPO" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="FACTURA" EntityType="Self.FACTURA" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="HABITACION" EntityType="Self.HABITACION" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="MENU" EntityType="Self.MENU" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="O_COMPRA" EntityType="Self.O_COMPRA" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="PERFIL" EntityType="Self.PERFIL" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="PORTAFOLIO" store:Type="Tables" />
+          <EntitySet Name="RESERVA" EntityType="Self.RESERVA" Schema="PORTAFOLIO" store:Type="Tables" />
+          <AssociationSet Name="CLIENTE_PERFIL_FK" Association="Self.CLIENTE_PERFIL_FK">
+            <End Role="PERFIL" EntitySet="PERFIL" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="D_RESERVA_HABITACION_FK" Association="Self.D_RESERVA_HABITACION_FK">
+            <End Role="HABITACION" EntitySet="HABITACION" />
+            <End Role="D_RESERVA" EntitySet="D_RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="D_RESERVA_RESERVA_FK" Association="Self.D_RESERVA_RESERVA_FK">
+            <End Role="RESERVA" EntitySet="RESERVA" />
+            <End Role="D_RESERVA" EntitySet="D_RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLE_O_COMPRA_O_COMPRA_FK" Association="Self.DETALLE_O_COMPRA_O_COMPRA_FK">
+            <End Role="O_COMPRA" EntitySet="O_COMPRA" />
+            <End Role="DETALLE_O_COMPRA" EntitySet="DETALLE_O_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLE_O_COMPRA_PRODUCTO_FK" Association="Self.DETALLE_O_COMPRA_PRODUCTO_FK">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETALLE_O_COMPRA" EntitySet="DETALLE_O_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_CLIENTE_CLIENTE_FK" Association="Self.EMP_CLIENTE_CLIENTE_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="EMP_CLIENTE" EntitySet="EMP_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_HOSTAL_PERFIL_FK" Association="Self.EMP_HOSTAL_PERFIL_FK">
+            <End Role="PERFIL" EntitySet="PERFIL" />
+            <End Role="EMP_HOSTAL" EntitySet="EMP_HOSTAL" />
+          </AssociationSet>
+          <AssociationSet Name="FACTURA_RESERVA_FK" Association="Self.FACTURA_RESERVA_FK">
+            <End Role="RESERVA" EntitySet="RESERVA" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="HABITACION_EQUIPO_FK" Association="Self.HABITACION_EQUIPO_FK">
+            <End Role="EQUIPO" EntitySet="EQUIPO" />
+            <End Role="HABITACION" EntitySet="HABITACION" />
+          </AssociationSet>
+          <AssociationSet Name="MENU_COMEDOR_FK" Association="Self.MENU_COMEDOR_FK">
+            <End Role="COMEDOR" EntitySet="COMEDOR" />
+            <End Role="MENU" EntitySet="MENU" />
+          </AssociationSet>
+          <AssociationSet Name="O_COMPRA_EMP_HOSTAL_FK" Association="Self.O_COMPRA_EMP_HOSTAL_FK">
+            <End Role="EMP_HOSTAL" EntitySet="EMP_HOSTAL" />
+            <End Role="O_COMPRA" EntitySet="O_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTO_CATEGORIA_FK" Association="Self.PRODUCTO_CATEGORIA_FK">
+            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTO_PROVEEDOR_FK" Association="Self.PRODUCTO_PROVEEDOR_FK">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="RESERVA_COMEDOR_FK" Association="Self.RESERVA_COMEDOR_FK">
+            <End Role="COMEDOR" EntitySet="COMEDOR" />
+            <End Role="RESERVA" EntitySet="RESERVA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CATEGORIA">
+          <Key>
+            <PropertyRef Name="ID_CATEGORIA" />
+          </Key>
+          <Property Name="ID_CATEGORIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.PRODUCTO_CATEGORIA_FK" FromRole="CATEGORIA" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_CLI" />
+          </Key>
+          <Property Name="ID_CLI" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTRASENIA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_EMPRESA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UBICACION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PERFIL_ID_PERFIL" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="PERFIL" Relationship="Self.CLIENTE_PERFIL_FK" FromRole="CLIENTE" ToRole="PERFIL" />
+          <NavigationProperty Name="EMP_CLIENTE" Relationship="Self.EMP_CLIENTE_CLIENTE_FK" FromRole="CLIENTE" ToRole="EMP_CLIENTE" />
+        </EntityType>
+        <EntityType Name="COMEDOR">
+          <Key>
+            <PropertyRef Name="ID_SERVICIO" />
+          </Key>
+          <Property Name="ID_SERVICIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MENU" Relationship="Self.MENU_COMEDOR_FK" FromRole="COMEDOR" ToRole="MENU" />
+          <NavigationProperty Name="RESERVA" Relationship="Self.RESERVA_COMEDOR_FK" FromRole="COMEDOR" ToRole="RESERVA" />
+        </EntityType>
+        <EntityType Name="D_RESERVA">
+          <Key>
+            <PropertyRef Name="ID_DETALLE" />
+          </Key>
+          <Property Name="ID_DETALLE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COD_CLI" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="HABITACION_ID_HABIT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="RESERVA_ID_RESERVA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="HABITACION" Relationship="Self.D_RESERVA_HABITACION_FK" FromRole="D_RESERVA" ToRole="HABITACION" />
+          <NavigationProperty Name="RESERVA" Relationship="Self.D_RESERVA_RESERVA_FK" FromRole="D_RESERVA" ToRole="RESERVA" />
+        </EntityType>
+        <EntityType Name="DETALLE_O_COMPRA">
+          <Key>
+            <PropertyRef Name="ID_DETALLE" />
+          </Key>
+          <Property Name="ID_DETALLE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="O_COMPRA_ID_ORDEN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRODUCTO_ID_PRODUCTO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CANTIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SUB_TOTAL" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="O_COMPRA" Relationship="Self.DETALLE_O_COMPRA_O_COMPRA_FK" FromRole="DETALLE_O_COMPRA" ToRole="O_COMPRA" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.DETALLE_O_COMPRA_PRODUCTO_FK" FromRole="DETALLE_O_COMPRA" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="EMP_CLIENTE">
+          <Key>
+            <PropertyRef Name="COD_CLI" />
+          </Key>
+          <Property Name="COD_CLI" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLIENTE_ID_CLI" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.EMP_CLIENTE_CLIENTE_FK" FromRole="EMP_CLIENTE" ToRole="CLIENTE" />
+        </EntityType>
+        <EntityType Name="EMP_HOSTAL">
+          <Key>
+            <PropertyRef Name="COD_EMP" />
+          </Key>
+          <Property Name="COD_EMP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USUARIO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTRASENIA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PERFIL_ID_PERFIL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="PERFIL" Relationship="Self.EMP_HOSTAL_PERFIL_FK" FromRole="EMP_HOSTAL" ToRole="PERFIL" />
+          <NavigationProperty Name="O_COMPRA" Relationship="Self.O_COMPRA_EMP_HOSTAL_FK" FromRole="EMP_HOSTAL" ToRole="O_COMPRA" />
+        </EntityType>
+        <EntityType Name="EQUIPO">
+          <Key>
+            <PropertyRef Name="ID_EQUIPO" />
+          </Key>
+          <Property Name="ID_EQUIPO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TV" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="BANIO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CANT_CAMAS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="HABITACION" Relationship="Self.HABITACION_EQUIPO_FK" FromRole="EQUIPO" ToRole="HABITACION" />
+        </EntityType>
+        <EntityType Name="FACTURA">
+          <Key>
+            <PropertyRef Name="ID_FACTURA" />
+          </Key>
+          <Property Name="ID_FACTURA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_FACTURA" Type="DateTime" Nullable="false" />
+          <Property Name="TOTAL_PAGAR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RESERVA_ID_RESERVA" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="RESERVA" Relationship="Self.FACTURA_RESERVA_FK" FromRole="FACTURA" ToRole="RESERVA" />
+        </EntityType>
+        <EntityType Name="HABITACION">
+          <Key>
+            <PropertyRef Name="ID_HABIT" />
+          </Key>
+          <Property Name="ID_HABIT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUM_HABIT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="EQUIPO_ID_EQUIPO" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="D_RESERVA" Relationship="Self.D_RESERVA_HABITACION_FK" FromRole="HABITACION" ToRole="D_RESERVA" />
+          <NavigationProperty Name="EQUIPO" Relationship="Self.HABITACION_EQUIPO_FK" FromRole="HABITACION" ToRole="EQUIPO" />
+        </EntityType>
+        <EntityType Name="MENU">
+          <Key>
+            <PropertyRef Name="ID_MENU" />
+          </Key>
+          <Property Name="ID_MENU" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTENIDO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMEDOR_ID_SERVICIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="COMEDOR" Relationship="Self.MENU_COMEDOR_FK" FromRole="MENU" ToRole="COMEDOR" />
+        </EntityType>
+        <EntityType Name="O_COMPRA">
+          <Key>
+            <PropertyRef Name="ID_ORDEN" />
+          </Key>
+          <Property Name="ID_ORDEN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_ORDEN" Type="DateTime" Nullable="false" />
+          <Property Name="TOTAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO_ORDEN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EMP_HOSTAL_COD_EMP" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="DETALLE_O_COMPRA" Relationship="Self.DETALLE_O_COMPRA_O_COMPRA_FK" FromRole="O_COMPRA" ToRole="DETALLE_O_COMPRA" />
+          <NavigationProperty Name="EMP_HOSTAL" Relationship="Self.O_COMPRA_EMP_HOSTAL_FK" FromRole="O_COMPRA" ToRole="EMP_HOSTAL" />
+        </EntityType>
+        <EntityType Name="PERFIL">
+          <Key>
+            <PropertyRef Name="ID_PERFIL" />
+          </Key>
+          <Property Name="ID_PERFIL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.CLIENTE_PERFIL_FK" FromRole="PERFIL" ToRole="CLIENTE" />
+          <NavigationProperty Name="EMP_HOSTAL" Relationship="Self.EMP_HOSTAL_PERFIL_FK" FromRole="PERFIL" ToRole="EMP_HOSTAL" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_VENCIMIENTO" Type="DateTime" Nullable="false" />
+          <Property Name="PROVEEDOR_ID_PROVEEDOR" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CANT_STOCK" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STOCK_CRITICO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CATEGORIA_ID_CATEGORIA" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="CATEGORIA" Relationship="Self.PRODUCTO_CATEGORIA_FK" FromRole="PRODUCTO" ToRole="CATEGORIA" />
+          <NavigationProperty Name="DETALLE_O_COMPRA" Relationship="Self.DETALLE_O_COMPRA_PRODUCTO_FK" FromRole="PRODUCTO" ToRole="DETALLE_O_COMPRA" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="Self.PRODUCTO_PROVEEDOR_FK" FromRole="PRODUCTO" ToRole="PROVEEDOR" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="ID_PROVEEDOR" />
+          </Key>
+          <Property Name="ID_PROVEEDOR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UBICACION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.PRODUCTO_PROVEEDOR_FK" FromRole="PROVEEDOR" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="RESERVA">
+          <Key>
+            <PropertyRef Name="ID_RESERVA" />
+          </Key>
+          <Property Name="ID_RESERVA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA_ENTRADA" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA_SALIDA" Type="DateTime" Nullable="false" />
+          <Property Name="CANT_DIAS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CLI" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TOTAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMEDOR_ID_SERVICIO" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="COMEDOR" Relationship="Self.RESERVA_COMEDOR_FK" FromRole="RESERVA" ToRole="COMEDOR" />
+          <NavigationProperty Name="D_RESERVA" Relationship="Self.D_RESERVA_RESERVA_FK" FromRole="RESERVA" ToRole="D_RESERVA" />
+          <NavigationProperty Name="FACTURA" Relationship="Self.FACTURA_RESERVA_FK" FromRole="RESERVA" ToRole="FACTURA" />
+        </EntityType>
+        <Association Name="PRODUCTO_CATEGORIA_FK">
+          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA">
+              <PropertyRef Name="ID_CATEGORIA" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="CATEGORIA_ID_CATEGORIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTE_PERFIL_FK">
+          <End Role="PERFIL" Type="Self.PERFIL" Multiplicity="0..1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERFIL">
+              <PropertyRef Name="ID_PERFIL" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="PERFIL_ID_PERFIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_CLIENTE_CLIENTE_FK">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+          <End Role="EMP_CLIENTE" Type="Self.EMP_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="ID_CLI" />
+            </Principal>
+            <Dependent Role="EMP_CLIENTE">
+              <PropertyRef Name="CLIENTE_ID_CLI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MENU_COMEDOR_FK">
+          <End Role="COMEDOR" Type="Self.COMEDOR" Multiplicity="1" />
+          <End Role="MENU" Type="Self.MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMEDOR">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Principal>
+            <Dependent Role="MENU">
+              <PropertyRef Name="COMEDOR_ID_SERVICIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RESERVA_COMEDOR_FK">
+          <End Role="COMEDOR" Type="Self.COMEDOR" Multiplicity="0..1" />
+          <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMEDOR">
+              <PropertyRef Name="ID_SERVICIO" />
+            </Principal>
+            <Dependent Role="RESERVA">
+              <PropertyRef Name="COMEDOR_ID_SERVICIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="D_RESERVA_HABITACION_FK">
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="0..1" />
+          <End Role="D_RESERVA" Type="Self.D_RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HABITACION">
+              <PropertyRef Name="ID_HABIT" />
+            </Principal>
+            <Dependent Role="D_RESERVA">
+              <PropertyRef Name="HABITACION_ID_HABIT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="D_RESERVA_RESERVA_FK">
+          <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="1" />
+          <End Role="D_RESERVA" Type="Self.D_RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESERVA">
+              <PropertyRef Name="ID_RESERVA" />
+            </Principal>
+            <Dependent Role="D_RESERVA">
+              <PropertyRef Name="RESERVA_ID_RESERVA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLE_O_COMPRA_O_COMPRA_FK">
+          <End Role="O_COMPRA" Type="Self.O_COMPRA" Multiplicity="1" />
+          <End Role="DETALLE_O_COMPRA" Type="Self.DETALLE_O_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_COMPRA">
+              <PropertyRef Name="ID_ORDEN" />
+            </Principal>
+            <Dependent Role="DETALLE_O_COMPRA">
+              <PropertyRef Name="O_COMPRA_ID_ORDEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLE_O_COMPRA_PRODUCTO_FK">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
+          <End Role="DETALLE_O_COMPRA" Type="Self.DETALLE_O_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="DETALLE_O_COMPRA">
+              <PropertyRef Name="PRODUCTO_ID_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_HOSTAL_PERFIL_FK">
+          <End Role="PERFIL" Type="Self.PERFIL" Multiplicity="1" />
+          <End Role="EMP_HOSTAL" Type="Self.EMP_HOSTAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERFIL">
+              <PropertyRef Name="ID_PERFIL" />
+            </Principal>
+            <Dependent Role="EMP_HOSTAL">
+              <PropertyRef Name="PERFIL_ID_PERFIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="O_COMPRA_EMP_HOSTAL_FK">
+          <End Role="EMP_HOSTAL" Type="Self.EMP_HOSTAL" Multiplicity="0..1" />
+          <End Role="O_COMPRA" Type="Self.O_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMP_HOSTAL">
+              <PropertyRef Name="COD_EMP" />
+            </Principal>
+            <Dependent Role="O_COMPRA">
+              <PropertyRef Name="EMP_HOSTAL_COD_EMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HABITACION_EQUIPO_FK">
+          <End Role="EQUIPO" Type="Self.EQUIPO" Multiplicity="0..1" />
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPO">
+              <PropertyRef Name="ID_EQUIPO" />
+            </Principal>
+            <Dependent Role="HABITACION">
+              <PropertyRef Name="EQUIPO_ID_EQUIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FACTURA_RESERVA_FK">
+          <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="0..1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESERVA">
+              <PropertyRef Name="ID_RESERVA" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="RESERVA_ID_RESERVA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRODUCTO_PROVEEDOR_FK">
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="0..1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="ID_PROVEEDOR" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="PROVEEDOR_ID_PROVEEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+          <EntitySet Name="COMEDOR" EntityType="Self.COMEDOR" />
+          <EntitySet Name="D_RESERVA" EntityType="Self.D_RESERVA" />
+          <EntitySet Name="DETALLE_O_COMPRA" EntityType="Self.DETALLE_O_COMPRA" />
+          <EntitySet Name="EMP_CLIENTE" EntityType="Self.EMP_CLIENTE" />
+          <EntitySet Name="EMP_HOSTAL" EntityType="Self.EMP_HOSTAL" />
+          <EntitySet Name="EQUIPO" EntityType="Self.EQUIPO" />
+          <EntitySet Name="FACTURA" EntityType="Self.FACTURA" />
+          <EntitySet Name="HABITACION" EntityType="Self.HABITACION" />
+          <EntitySet Name="MENU" EntityType="Self.MENU" />
+          <EntitySet Name="O_COMPRA" EntityType="Self.O_COMPRA" />
+          <EntitySet Name="PERFIL" EntityType="Self.PERFIL" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
+          <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" />
+          <EntitySet Name="RESERVA" EntityType="Self.RESERVA" />
+          <AssociationSet Name="PRODUCTO_CATEGORIA_FK" Association="Self.PRODUCTO_CATEGORIA_FK">
+            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTE_PERFIL_FK" Association="Self.CLIENTE_PERFIL_FK">
+            <End Role="PERFIL" EntitySet="PERFIL" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_CLIENTE_CLIENTE_FK" Association="Self.EMP_CLIENTE_CLIENTE_FK">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="EMP_CLIENTE" EntitySet="EMP_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="MENU_COMEDOR_FK" Association="Self.MENU_COMEDOR_FK">
+            <End Role="COMEDOR" EntitySet="COMEDOR" />
+            <End Role="MENU" EntitySet="MENU" />
+          </AssociationSet>
+          <AssociationSet Name="RESERVA_COMEDOR_FK" Association="Self.RESERVA_COMEDOR_FK">
+            <End Role="COMEDOR" EntitySet="COMEDOR" />
+            <End Role="RESERVA" EntitySet="RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="D_RESERVA_HABITACION_FK" Association="Self.D_RESERVA_HABITACION_FK">
+            <End Role="HABITACION" EntitySet="HABITACION" />
+            <End Role="D_RESERVA" EntitySet="D_RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="D_RESERVA_RESERVA_FK" Association="Self.D_RESERVA_RESERVA_FK">
+            <End Role="RESERVA" EntitySet="RESERVA" />
+            <End Role="D_RESERVA" EntitySet="D_RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLE_O_COMPRA_O_COMPRA_FK" Association="Self.DETALLE_O_COMPRA_O_COMPRA_FK">
+            <End Role="O_COMPRA" EntitySet="O_COMPRA" />
+            <End Role="DETALLE_O_COMPRA" EntitySet="DETALLE_O_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLE_O_COMPRA_PRODUCTO_FK" Association="Self.DETALLE_O_COMPRA_PRODUCTO_FK">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETALLE_O_COMPRA" EntitySet="DETALLE_O_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_HOSTAL_PERFIL_FK" Association="Self.EMP_HOSTAL_PERFIL_FK">
+            <End Role="PERFIL" EntitySet="PERFIL" />
+            <End Role="EMP_HOSTAL" EntitySet="EMP_HOSTAL" />
+          </AssociationSet>
+          <AssociationSet Name="O_COMPRA_EMP_HOSTAL_FK" Association="Self.O_COMPRA_EMP_HOSTAL_FK">
+            <End Role="EMP_HOSTAL" EntitySet="EMP_HOSTAL" />
+            <End Role="O_COMPRA" EntitySet="O_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="HABITACION_EQUIPO_FK" Association="Self.HABITACION_EQUIPO_FK">
+            <End Role="EQUIPO" EntitySet="EQUIPO" />
+            <End Role="HABITACION" EntitySet="HABITACION" />
+          </AssociationSet>
+          <AssociationSet Name="FACTURA_RESERVA_FK" Association="Self.FACTURA_RESERVA_FK">
+            <End Role="RESERVA" EntitySet="RESERVA" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCTO_PROVEEDOR_FK" Association="Self.PRODUCTO_PROVEEDOR_FK">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelEntities">
+          <EntitySetMapping Name="CATEGORIA">
+            <EntityTypeMapping TypeName="Model.CATEGORIA">
+              <MappingFragment StoreEntitySet="CATEGORIA">
+                <ScalarProperty Name="ID_CATEGORIA" ColumnName="ID_CATEGORIA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="Model.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="ID_CLI" ColumnName="ID_CLI" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="CONTRASENIA" ColumnName="CONTRASENIA" />
+                <ScalarProperty Name="NOMBRE_EMPRESA" ColumnName="NOMBRE_EMPRESA" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="UBICACION" ColumnName="UBICACION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="PERFIL_ID_PERFIL" ColumnName="PERFIL_ID_PERFIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMEDOR">
+            <EntityTypeMapping TypeName="Model.COMEDOR">
+              <MappingFragment StoreEntitySet="COMEDOR">
+                <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="D_RESERVA">
+            <EntityTypeMapping TypeName="Model.D_RESERVA">
+              <MappingFragment StoreEntitySet="D_RESERVA">
+                <ScalarProperty Name="ID_DETALLE" ColumnName="ID_DETALLE" />
+                <ScalarProperty Name="COD_CLI" ColumnName="COD_CLI" />
+                <ScalarProperty Name="HABITACION_ID_HABIT" ColumnName="HABITACION_ID_HABIT" />
+                <ScalarProperty Name="RESERVA_ID_RESERVA" ColumnName="RESERVA_ID_RESERVA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLE_O_COMPRA">
+            <EntityTypeMapping TypeName="Model.DETALLE_O_COMPRA">
+              <MappingFragment StoreEntitySet="DETALLE_O_COMPRA">
+                <ScalarProperty Name="ID_DETALLE" ColumnName="ID_DETALLE" />
+                <ScalarProperty Name="O_COMPRA_ID_ORDEN" ColumnName="O_COMPRA_ID_ORDEN" />
+                <ScalarProperty Name="PRODUCTO_ID_PRODUCTO" ColumnName="PRODUCTO_ID_PRODUCTO" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="SUB_TOTAL" ColumnName="SUB_TOTAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMP_CLIENTE">
+            <EntityTypeMapping TypeName="Model.EMP_CLIENTE">
+              <MappingFragment StoreEntitySet="EMP_CLIENTE">
+                <ScalarProperty Name="COD_CLI" ColumnName="COD_CLI" />
+                <ScalarProperty Name="RUN" ColumnName="RUN" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="CLIENTE_ID_CLI" ColumnName="CLIENTE_ID_CLI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMP_HOSTAL">
+            <EntityTypeMapping TypeName="Model.EMP_HOSTAL">
+              <MappingFragment StoreEntitySet="EMP_HOSTAL">
+                <ScalarProperty Name="COD_EMP" ColumnName="COD_EMP" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="CONTRASENIA" ColumnName="CONTRASENIA" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="RUN" ColumnName="RUN" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="PERFIL_ID_PERFIL" ColumnName="PERFIL_ID_PERFIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EQUIPO">
+            <EntityTypeMapping TypeName="Model.EQUIPO">
+              <MappingFragment StoreEntitySet="EQUIPO">
+                <ScalarProperty Name="ID_EQUIPO" ColumnName="ID_EQUIPO" />
+                <ScalarProperty Name="TV" ColumnName="TV" />
+                <ScalarProperty Name="BANIO" ColumnName="BANIO" />
+                <ScalarProperty Name="CANT_CAMAS" ColumnName="CANT_CAMAS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACTURA">
+            <EntityTypeMapping TypeName="Model.FACTURA">
+              <MappingFragment StoreEntitySet="FACTURA">
+                <ScalarProperty Name="ID_FACTURA" ColumnName="ID_FACTURA" />
+                <ScalarProperty Name="FECHA_FACTURA" ColumnName="FECHA_FACTURA" />
+                <ScalarProperty Name="TOTAL_PAGAR" ColumnName="TOTAL_PAGAR" />
+                <ScalarProperty Name="RESERVA_ID_RESERVA" ColumnName="RESERVA_ID_RESERVA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HABITACION">
+            <EntityTypeMapping TypeName="Model.HABITACION">
+              <MappingFragment StoreEntitySet="HABITACION">
+                <ScalarProperty Name="ID_HABIT" ColumnName="ID_HABIT" />
+                <ScalarProperty Name="NUM_HABIT" ColumnName="NUM_HABIT" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="EQUIPO_ID_EQUIPO" ColumnName="EQUIPO_ID_EQUIPO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MENU">
+            <EntityTypeMapping TypeName="Model.MENU">
+              <MappingFragment StoreEntitySet="MENU">
+                <ScalarProperty Name="ID_MENU" ColumnName="ID_MENU" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CONTENIDO" ColumnName="CONTENIDO" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="COMEDOR_ID_SERVICIO" ColumnName="COMEDOR_ID_SERVICIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O_COMPRA">
+            <EntityTypeMapping TypeName="Model.O_COMPRA">
+              <MappingFragment StoreEntitySet="O_COMPRA">
+                <ScalarProperty Name="ID_ORDEN" ColumnName="ID_ORDEN" />
+                <ScalarProperty Name="FECHA_ORDEN" ColumnName="FECHA_ORDEN" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="ESTADO_ORDEN" ColumnName="ESTADO_ORDEN" />
+                <ScalarProperty Name="EMP_HOSTAL_COD_EMP" ColumnName="EMP_HOSTAL_COD_EMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERFIL">
+            <EntityTypeMapping TypeName="Model.PERFIL">
+              <MappingFragment StoreEntitySet="PERFIL">
+                <ScalarProperty Name="ID_PERFIL" ColumnName="ID_PERFIL" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTO">
+            <EntityTypeMapping TypeName="Model.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FECHA_VENCIMIENTO" ColumnName="FECHA_VENCIMIENTO" />
+                <ScalarProperty Name="PROVEEDOR_ID_PROVEEDOR" ColumnName="PROVEEDOR_ID_PROVEEDOR" />
+                <ScalarProperty Name="CANT_STOCK" ColumnName="CANT_STOCK" />
+                <ScalarProperty Name="STOCK_CRITICO" ColumnName="STOCK_CRITICO" />
+                <ScalarProperty Name="CATEGORIA_ID_CATEGORIA" ColumnName="CATEGORIA_ID_CATEGORIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVEEDOR">
+            <EntityTypeMapping TypeName="Model.PROVEEDOR">
+              <MappingFragment StoreEntitySet="PROVEEDOR">
+                <ScalarProperty Name="ID_PROVEEDOR" ColumnName="ID_PROVEEDOR" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="UBICACION" ColumnName="UBICACION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESERVA">
+            <EntityTypeMapping TypeName="Model.RESERVA">
+              <MappingFragment StoreEntitySet="RESERVA">
+                <ScalarProperty Name="ID_RESERVA" ColumnName="ID_RESERVA" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="FECHA_ENTRADA" ColumnName="FECHA_ENTRADA" />
+                <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
+                <ScalarProperty Name="CANT_DIAS" ColumnName="CANT_DIAS" />
+                <ScalarProperty Name="ID_CLI" ColumnName="ID_CLI" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="COMEDOR_ID_SERVICIO" ColumnName="COMEDOR_ID_SERVICIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

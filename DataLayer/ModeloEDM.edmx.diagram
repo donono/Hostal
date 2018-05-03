@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="83cb7089916b40729a5316871486d59b" Name="Diagram1" ZoomLevel="109">
+        <EntityTypeShape EntityType="Model.CATEGORIA" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CLIENTE" Width="1.5" PointX="5.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COMEDOR" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.D_RESERVA" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DETALLE_O_COMPRA" Width="1.5" PointX="10.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EMP_CLIENTE" Width="1.5" PointX="8" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EMP_HOSTAL" Width="1.5" PointX="5.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EQUIPO" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FACTURA" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.HABITACION" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MENU" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.O_COMPRA" Width="1.5" PointX="8" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PERFIL" Width="1.5" PointX="3.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PRODUCTO" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PROVEEDOR" Width="1.5" PointX="5.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RESERVA" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="Model.PRODUCTO_CATEGORIA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.CLIENTE_PERFIL_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.EMP_CLIENTE_CLIENTE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.MENU_COMEDOR_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.RESERVA_COMEDOR_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.D_RESERVA_HABITACION_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.D_RESERVA_RESERVA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.DETALLE_O_COMPRA_O_COMPRA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.DETALLE_O_COMPRA_PRODUCTO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.EMP_HOSTAL_PERFIL_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.O_COMPRA_EMP_HOSTAL_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.HABITACION_EQUIPO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FACTURA_RESERVA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.PRODUCTO_PROVEEDOR_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
